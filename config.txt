@@ -1,0 +1,17 @@
+# TCP Server Configuration File
+# Lines starting with # are comments
+
+# Server port
+PORT=8080
+
+# Number of worker threads in the thread pool
+THREAD_POOL_SIZE=4
+
+# Maximum number of queued connections
+MAX_CONNECTIONS=100
+
+# Log level: DEBUG, INFO, or ERROR
+LOG_LEVEL=INFO
+
+# Log file path (leave empty for stdout only)
+LOG_FILE=server.log

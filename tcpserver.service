@@ -1,0 +1,37 @@
+# Systemd service file for TCP Server
+# Installation:
+#   1. Copy this file to /etc/systemd/system/tcpserver.service
+#   2. Update paths below to match your installation
+#   3. Run: sudo systemctl daemon-reload
+#   4. Run: sudo systemctl enable tcpserver
+#   5. Run: sudo systemctl start tcpserver
+#
+# Commands:
+#   Status:  sudo systemctl status tcpserver
+#   Start:   sudo systemctl start tcpserver
+#   Stop:    sudo systemctl stop tcpserver
+#   Restart: sudo systemctl restart tcpserver
+#   Logs:    sudo journalctl -u tcpserver -f
+
+[Unit]
+Description=Scalable Multi-Client TCP Server
+After=network.target
+
+[Service]
+Type=simple
+User=your_username
+Group=your_group
+WorkingDirectory=/path/to/server/directory
+ExecStart=/path/to/server/directory/server /path/to/server/directory/config.txt
+Restart=on-failure
+RestartSec=5
+
+# Security settings
+NoNewPrivileges=true
+PrivateTmp=true
+
+# Resource limits
+LimitNOFILE=65536
+
+[Install]
+WantedBy=multi-user.target
